@@ -10,7 +10,13 @@ with open('key.json', 'r', encoding='utf-8') as f:
     hash_key = json.load(f)['key']
 
 
-def encrypt_symbol(plane_text):
+def encrypt_symbol(plane_text: str) -> str:
+    """
+    encrypt a single character using the vigenere cipher algorithm
+    cycle through the key by global index
+    :param plane_text: character to encrypt
+    :return: encrypted character or original if there is no such character in alphabet
+    """
     global CURRENT_INDEX
     if CURRENT_INDEX + 1 >= len(hash_key):
         CURRENT_INDEX = 0
@@ -29,11 +35,16 @@ def encrypt_symbol(plane_text):
         return plane_text
 
 
-encrypted_txt = ""
-for symbol in phrase:
-    encrypted_txt += encrypt_symbol(symbol)
+def main():
+    encrypted_txt = ""
+    for symbol in phrase:
+        encrypted_txt += encrypt_symbol(symbol)
 
-with open('encrypted.txt', 'w', encoding='utf-8') as f:
-    f.write(encrypted_txt)
+    with open('encrypted.txt', 'w', encoding='utf-8') as f:
+        f.write(encrypted_txt)
 
-print(f"result: {encrypted_txt}")
+    print(f"result: {encrypted_txt}")
+
+
+if __name__ == '__main__':
+    main()
