@@ -4,10 +4,12 @@ from const import FREQUENCY
 
 def read_file(filename):
     with open(filename, 'r', encoding='utf-8') as file:
-        return file.read().strip()
+        file = file.read().strip()
+        cfile = file.replace("\n", "")
+        return cfile
 
 
-def get_frequency(text):
+def get_frequency(text: str) -> dict:
     frequency_dict = {}
     for i in set(text):
         frequency_dict[i] = text.count(i) / len(text)
@@ -22,7 +24,7 @@ def main():
         freq_dict = get_frequency(encrypted_text)
 
         with open('frequency.json', 'w', encoding='utf-8') as file:
-            json.dump(freq_dict, file, ensure_ascii=False)
+            json.dump(freq_dict, file, indent=4, ensure_ascii=False)
 
         print(freq_dict)
 
