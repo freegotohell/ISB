@@ -1,3 +1,7 @@
+import json
+
+DECRYPTED = 'decrypted.txt'
+ENCRYPTED = 'encrypted.txt'
 FREQUENCY = {
     " ": 0.128675,
     "о": 0.096456,
@@ -31,5 +35,31 @@ FREQUENCY = {
     "ш": 0.004229,
     "щ": 0.003625,
     "э": 0.002416,
-    "ъ": 0.000000,
+    "ъ": 0.000000
 }
+FREQUENCY_FILE = 'frequency.json'
+KEY = 'key.json'
+KEY2 = 'text.json'
+READABLE = 'read_decrypted.txt'
+
+
+def read_txt(filename):
+    with open(filename, 'r', encoding='utf-8') as file:
+        file = file.read().strip()
+        return file
+
+
+def write_txt(data, filename):
+    with open(filename, 'w', encoding='utf-8') as f:
+        f.write(data)
+
+
+def read_json(filename):
+    with open(filename, 'r', encoding='utf-8') as f:
+        txt_key = json.load(f)
+        return txt_key
+
+
+def write_json(dictionary, filename):
+    with open(filename, 'w', encoding='utf-8') as file:
+        json.dump(dictionary, file, indent=4, ensure_ascii=False)
