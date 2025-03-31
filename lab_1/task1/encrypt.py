@@ -1,13 +1,9 @@
-import json
-from const import ALPHABET
+from const import *
 
 CURRENT_INDEX = 0
 
-with open('plane_text.txt', 'r', encoding='utf-8') as f:
-    phrase = f.read().strip()
-
-with open('key.json', 'r', encoding='utf-8') as f:
-    hash_key = json.load(f)['key']
+text = read_txt(PLANE_TEXT)
+hash_key = load_key('key', KEY)
 
 
 def encrypt_symbol(plane_text: str) -> str:
@@ -37,12 +33,10 @@ def encrypt_symbol(plane_text: str) -> str:
 
 def main():
     encrypted_txt = ""
-    for symbol in phrase:
+    for symbol in text:
         encrypted_txt += encrypt_symbol(symbol)
 
-    with open('encrypted.txt', 'w', encoding='utf-8') as f:
-        f.write(encrypted_txt)
-
+    write_txt(encrypted_txt, ENCRYPTED)
     print(f"result: {encrypted_txt}")
 
 
