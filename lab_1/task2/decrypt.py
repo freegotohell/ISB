@@ -2,6 +2,11 @@ from const import *
 
 
 def get_frequency(text: str) -> dict:
+    """
+    calculates the frequency of each character in the text
+    :param text: input text
+    :return: sorted dictionary where keys are characters and values are their frequencies
+    """
     frequency_dict = {}
     size = len(text)
     for i in text:
@@ -11,7 +16,13 @@ def get_frequency(text: str) -> dict:
     return dict(sorted(frequency_dict.items(), key=lambda item: item[1], reverse=True))
 
 
-def get_key(dict1, dict2):
+def get_key(dict1: dict, dict2: dict) -> dict:
+    """
+    creates a key by mapping keys from two input dictionaries based on their order
+    :param dict1: keys from this dictionary will be the keys in the output dictionary, calculated freq
+    :param dict2: keys from this dictionary will be the values in the output dictionary, sample freq
+    :return: dictionary where each key from dict1 is mapped to the corresponding key from dict2
+    """
     new_dict = {}
     for i in range(len(dict1)):
         key1 = list(dict1.keys())[i]
@@ -20,12 +31,18 @@ def get_key(dict1, dict2):
     return new_dict
 
 
-def replace(text, key):
+def replace(text: str, key: dict) -> str:
+    """
+    replaces characters in the input text based on the provided key
+    :param text: input text
+    :param key: dictionary where keys are characters to be replaced and values are their replacements
+    :return: new text where characters replaced according to the key, not found in the key aren't replaced
+    """
     decrypted = ""
     for i in text:
         decrypted_s = key.get(i)
         if decrypted_s is None:
-            decrypted_s = ''
+            decrypted_s = i
         decrypted += decrypted_s
     return decrypted
 
