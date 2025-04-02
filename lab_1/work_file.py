@@ -2,8 +2,11 @@ import json
 
 
 def write_txt(data, filename):
-    with open(filename, 'w', encoding='utf-8') as f:
-        f.write(data)
+    try:
+        with open(filename, 'w', encoding='utf-8') as f:
+            f.write(data)
+    except Exception as e:
+        raise Exception(f"An error occurred when saving the file: {e}")
 
 
 def read_txt(filename: str) -> str:
@@ -33,7 +36,6 @@ def load_key(key_name, filename):
 def read_json(filename: str) -> dict[str, str]:
     try:
         with open(filename, "r", encoding="utf-8") as file:
-            #txt_key = json.load(f)
             return json.load(file)
     except FileNotFoundError:
         print(f"file {filename} not found")
@@ -44,8 +46,9 @@ def read_json(filename: str) -> dict[str, str]:
 
 
 def write_json(dictionary, filename):
-    with open(filename, 'w', encoding='utf-8') as file:
-        json.dump(dictionary, file, indent=4, ensure_ascii=False)
+    try:
+        with open(filename, 'w', encoding='utf-8') as file:
+            json.dump(dictionary, file, indent=4, ensure_ascii=False)
+    except Exception as e:
+        raise Exception(f"An error occurred when saving the file: {e}")
 
-
-settings = read_json("../settings.json")
