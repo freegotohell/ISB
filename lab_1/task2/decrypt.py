@@ -1,4 +1,4 @@
-from const import *
+from lab_1.work_file import *
 
 
 def get_frequency(text: str) -> dict:
@@ -48,21 +48,24 @@ def replace(text: str, key: dict) -> str:
 
 
 def main():
-    encrypted_text = read_txt(ENCRYPTED)
+    task2 = read_json("../settings.json").get("task2")
+    encrypted_text = read_txt(task2["ENCRYPTED"])
 
     if encrypted_text:
         freq_dict = get_frequency(encrypted_text)
-        write_json(freq_dict, FREQUENCY_FILE)
+        write_json(freq_dict, task2["FREQUENCY_FILE"])
 
-        new_dict = get_key(freq_dict, FREQUENCY)
-        write_json(new_dict, KEY)
+        sample_freq = read_json(task2["SAMPLE_FREQ"])
+        new_dict = get_key(freq_dict, sample_freq)
+
+        write_json(new_dict, task2["KEY"])
 
         result = replace(encrypted_text, new_dict)
-        write_txt(result, DECRYPTED)
+        write_txt(result, task2["DECRYPTED"])
 
-        txt_key = read_json(KEY2)
+        txt_key = read_json(task2["KEY2"])
         txt_nice = replace(result, txt_key)
-        write_txt(txt_nice, READABLE)
+        write_txt(txt_nice, task2["READABLE"])
         print(txt_nice)
 
 

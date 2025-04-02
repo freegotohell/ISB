@@ -1,0 +1,17 @@
+{
+  "task1": {
+    "ALPHABET": "abcdefghijklmnopqrstuvwxyz' ,",
+    "ENCRYPTED": "../task1/encrypted.txt",
+    "KEY": "../task1/key.json",
+    "PLANE_TEXT": "../task1/plane_text.txt"
+  },
+  "task2": {
+    "SAMPLE_FREQ": "../task2/sample_freq.json",
+    "DECRYPTED": "../task2/decrypted.txt",
+    "ENCRYPTED": "../task2/encrypted.txt",
+    "FREQUENCY_FILE": "../task2/frequency.json",
+    "KEY": "../task2/key.json",
+    "KEY2": "../task2/text.json",
+    "READABLE": "../task2/read_decrypted.txt"
+  }
+}
