@@ -12,7 +12,7 @@ def read_txt(filename: str) -> str:
         print(f"error: {e}")
 
 
-def read_json(filename: str) -> dict[str, str]:
+def read_json(filename: str) -> dict:
     try:
         with open(filename, "r", encoding="utf-8") as file:
             return json.load(file)
