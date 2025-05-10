@@ -1,0 +1,5 @@
+{
+  "CPP": "sequence_cpp.txt",
+  "JAVA": "sequence_java.txt",
+  "STATS": "stats.json"
+}
