@@ -24,7 +24,7 @@ def read_json(filename: str) -> dict:
         print(f"error: {e}")
 
 
-def write_json(dictionary, filename):
+def write_json(dictionary: dict, filename: str) -> None:
     try:
         with open(filename, 'w', encoding='utf-8') as file:
             json.dump(dictionary, file, indent=4, ensure_ascii=False)

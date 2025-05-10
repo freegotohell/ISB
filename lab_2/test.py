@@ -4,13 +4,23 @@ import scipy.special as sp
 from work_file import *
 
 
-def frequency_bit_test(data: str) -> float:
-    stat = 1 / math.sqrt(len(data)) * (data.count("1") - data.count("0"))
+def frequency_bit_test(binary_str: str) -> float:
+    """
+    frequency bitwise test
+    :param binary_str: bitwise sequence for test
+    :return:the probability that the value is close to the benchmark
+    """
+    stat = 1 / math.sqrt(len(binary_str)) * (binary_str.count("1") - binary_str.count("0"))
     p_value = math.erfc(stat / math.sqrt(2))
     return p_value
 
 
 def identical_consecutive_bit_test(binary_str: str) -> float:
+    """
+    a test for identical consecutive bits
+    :param binary_str: bitwise sequence for test
+    :return: the probability that the value is close to the benchmark
+    """
     n = len(binary_str)
     zeta = binary_str.count("1") / n
     if abs(zeta - 0.5) >= (2 / math.sqrt(n)):
@@ -24,6 +34,12 @@ def identical_consecutive_bit_test(binary_str: str) -> float:
 
 
 def longest_sequence_in_block(binary_str: str, p: list) -> float:
+    """
+    Test for the longest sequence of units in the block
+    :param binary_str: bitwise sequence for test
+    :param p: constant theoretical probabilities
+    :return: the probability that the value is close to the benchmark
+    """
     blocks = []
     for i in range(0, len(binary_str), 8):
         block = binary_str[i: i + 8]
