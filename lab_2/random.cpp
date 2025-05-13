@@ -3,7 +3,13 @@
 #include <random>
 #include <string>
 
-
+/**
+ * generates a pseudorandom binary sequence of 128 bit
+ *
+ *uses std::random_device to initialize the random number generator
+ *
+ *@return std::string string of 128 characters '0' and '1'
+ */
 std::string generate_128() {
     std::random_device rd;
     std::mt19937 gen(rd());
@@ -16,6 +22,12 @@ std::string generate_128() {
     return seq;
 }
 
+/**
+ * saves a string to the specified file
+ *
+ * @param dir path to the file to save
+ * @param seq the string to save
+ */
 void save_string(std::string dir, std::string seq) {
     try {
         std::ofstream out;
